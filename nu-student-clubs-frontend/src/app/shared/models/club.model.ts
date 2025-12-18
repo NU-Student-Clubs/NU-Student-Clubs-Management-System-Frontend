@@ -1,24 +1,28 @@
+// Backend Response Model
 export interface Club {
-  id: string;
+  id: number;
   name: string;
   description: string;
-  imageUrl: string;
+  president: string;
+  email: string;
   category: string;
-  memberCount: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export interface ClubMembership {
-  id: string;
-  clubId: string;
-  userId: string;
-  role: MemberRole;
-  joinedAt: Date;
+// DTO for creating/updating clubs
+export interface ClubRequest {
+  name: string;
+  description?: string;
+  president: string;
+  email: string;
+  category: string;
 }
 
-export enum MemberRole {
-  MEMBER = 'MEMBER',
-  OFFICER = 'OFFICER',
-  LEADER = 'LEADER'
+export interface ClubResponse extends Club {}
+
+// For filtering
+export interface ClubFilters {
+  category?: string;
+  searchQuery?: string;
 }
