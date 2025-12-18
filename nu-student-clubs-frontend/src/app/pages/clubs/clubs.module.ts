@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-clubs',
-  template: '<h1>Clubs</h1>',
-  standalone: true
-})
-export class ClubsComponent { }
+import { ClubListComponent } from './club-list/club-list';
+import { ClubDetailsComponent } from './club-details/club-details';
+import { MyMembershipsComponent } from './my-memberships/my-memberships';
 
 const routes: Routes = [
   {
     path: '',
-    component: ClubsComponent
+    component: ClubListComponent
+  },
+  {
+    path: 'my-memberships',
+    component: MyMembershipsComponent
+  },
+  {
+    path: ':id',
+    component: ClubDetailsComponent
   }
 ];
 
