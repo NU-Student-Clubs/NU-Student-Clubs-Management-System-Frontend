@@ -35,7 +35,8 @@ export class MyMembershipsComponent implements OnInit {
     
     this.membershipService.getMyMemberships(this.currentUserId).subscribe({
       next: (memberships) => {
-        this.memberships = memberships;
+        // Filter memberships for current user
+        this.memberships = memberships.filter(m => m.userId === this.currentUserId);
         this.isLoading = false;
       },
       error: (err) => {
