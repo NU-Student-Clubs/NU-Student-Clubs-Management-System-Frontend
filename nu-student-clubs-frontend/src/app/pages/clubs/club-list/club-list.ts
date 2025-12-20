@@ -46,7 +46,9 @@ export class ClubListComponent implements OnInit {
     
     this.clubService.getAllClubs(0, 100).subscribe({
       next: (response) => {
-        this.clubs = response.content || [];
+        // Support both paginated responses ({ content: [...] }) and plain arrays
+        const items = Array.isArray(response) ? response : response?.content;
+        this.clubs = items || [];
         this.filteredClubs = [...this.clubs];
         this.isLoading = false;
       },
