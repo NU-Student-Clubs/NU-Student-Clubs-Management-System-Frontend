@@ -2,10 +2,22 @@
 export interface Club {
   id: number;
   name: string;
-  description: string;
+  description?: string;
+  overview?: string;
+  mission?: string;
+  founders?: string;
   president: string;
+  presidentId?: number;
   email: string;
+  contactEmail?: string;
   category: string;
+  logo?: string;
+  applicationFormUrl?: string;
+  facebookUrl?: string;
+  instagramUrl?: string;
+  linkedinUrl?: string;
+  numberOfMembers?: number;
+  isActive?: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -14,9 +26,21 @@ export interface Club {
 export interface ClubRequest {
   name: string;
   description?: string;
+  overview?: string;
+  mission?: string;
+  founders?: string;
   president: string;
+  presidentId?: number;
   email: string;
+  contactEmail?: string;
   category: string;
+  logo?: string;
+  applicationFormUrl?: string;
+  facebookUrl?: string;
+  instagramUrl?: string;
+  linkedinUrl?: string;
+  numberOfMembers?: number;
+  isActive?: boolean;
 }
 
 export interface ClubResponse extends Club {}
