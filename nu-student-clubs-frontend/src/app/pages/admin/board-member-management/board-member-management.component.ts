@@ -17,7 +17,7 @@ export class BoardMemberManagementComponent implements OnInit {
   filteredMembers: BoardMemberResponse[] = [];
   
   showForm = false;
-  editingId: string | null = null;
+  editingId: number | null = null;
   loading = false;
   error: string | null = null;
   
@@ -115,7 +115,7 @@ export class BoardMemberManagementComponent implements OnInit {
     }
 
     if (this.editingId) {
-      this.boardMemberService.updateBoardMember(this.editingId, this.form.value).subscribe({
+      this.boardMemberService.updateBoardMember(this.editingId.toString(), this.form.value).subscribe({
         next: () => {
           this.loadBoardMembers();
           this.closeForm();
@@ -139,9 +139,9 @@ export class BoardMemberManagementComponent implements OnInit {
     }
   }
 
-  deleteMember(id: string): void {
+  deleteMember(id: number): void {
     if (confirm('Are you sure you want to delete this board member?')) {
-      this.boardMemberService.deleteBoardMember(id).subscribe({
+      this.boardMemberService.deleteBoardMember(id.toString()).subscribe({
         next: () => {
           this.loadBoardMembers();
         },

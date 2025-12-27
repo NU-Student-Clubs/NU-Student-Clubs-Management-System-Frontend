@@ -15,7 +15,7 @@ export interface MediaItem {
   providedIn: 'root'
 })
 export class GalleryService {
-  private apiUrl = `${environment.apiUrl}/gallery`;
+ private apiUrl = `/api/gallery`;
 
   constructor(private http: HttpClient) {}
 

@@ -19,7 +19,7 @@ export class CommitteeManagementComponent implements OnInit {
   
   showForm = false;
   showMembersModal = false;
-  editingId: string | null = null;
+  editingId: number | null = null;
   loading = false;
   error: string | null = null;
   
@@ -73,7 +73,7 @@ export class CommitteeManagementComponent implements OnInit {
         committee.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         committee.clubName?.toLowerCase().includes(this.searchTerm.toLowerCase());
       
-      const matchesClub = !this.filterClub || committee.clubId === this.filterClub;
+      const matchesClub = !this.filterClub || (committee.clubId && committee.clubId.toString() === this.filterClub);
       
       const matchesStatus = this.filterStatus === 'all' || 
         (this.filterStatus === 'active' && committee.isActive) ||
@@ -121,7 +121,7 @@ export class CommitteeManagementComponent implements OnInit {
     }
 
     if (this.editingId) {
-      this.committeeService.updateCommittee(this.editingId, this.form.value).subscribe({
+      this.committeeService.updateCommittee(this.editingId.toString(), this.form.value).subscribe({
         next: () => {
           this.loadCommittees();
           this.closeForm();
@@ -145,8 +145,8 @@ export class CommitteeManagementComponent implements OnInit {
     }
   }
 
-  viewMembers(id: string): void {
-    this.committeeService.getCommitteeById(id).subscribe({
+  viewMembers(id: number): void {
+    this.committeeService.getCommitteeById(id.toString()).subscribe({
       next: (data) => {
         this.selectedCommittee = data;
         this.showMembersModal = true;
@@ -163,9 +163,9 @@ export class CommitteeManagementComponent implements OnInit {
     this.selectedCommittee = null;
   }
 
-  deleteCommittee(id: string): void {
+  deleteCommittee(id: number): void {
     if (confirm('Are you sure you want to delete this committee?')) {
-      this.committeeService.deleteCommittee(id).subscribe({
+      this.committeeService.deleteCommittee(id.toString()).subscribe({
         next: () => {
           this.loadCommittees();
         },

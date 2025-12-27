@@ -11,12 +11,12 @@ export interface Committee {
 }
 
 export interface CommitteeResponse {
-  id: string;
+  id: number;
   name: string;
-  clubId: string;
+  clubId?: number;
   description: string;
-  memberIds: string[];
-  headId: string;
+  memberIds?: string[];
+  headId?: string;
   createdAt: string;
   updatedAt: string;
   isActive: boolean;
@@ -27,9 +27,9 @@ export interface CommitteeResponse {
 
 export interface CreateCommitteeRequest {
   name: string;
-  clubId: string;
   description: string;
-  headId: string;
+  club: { id: number };
+  headId?: string;
   memberIds?: string[];
 }
 
@@ -39,6 +39,7 @@ export interface UpdateCommitteeRequest {
   headId?: string;
   memberIds?: string[];
   isActive?: boolean;
+  club?: { id: number };
 }
 
 export interface CommitteeWithMembers extends CommitteeResponse {

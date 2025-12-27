@@ -17,7 +17,7 @@ export interface Application {
   providedIn: 'root'
 })
 export class ApplicationService {
-  private apiUrl = `${environment.apiUrl}/applications`;
+ private apiUrl = `/api/applications`;;
 
   constructor(private http: HttpClient) {}
 

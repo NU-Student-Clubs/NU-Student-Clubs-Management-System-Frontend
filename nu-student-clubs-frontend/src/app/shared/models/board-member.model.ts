@@ -9,28 +9,40 @@ export interface BoardMember {
 }
 
 export interface BoardMemberResponse {
-  id: string;
-  userId: string;
-  clubId: string;
+  id: number;
+  userId?: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  clubId?: number;
   position: string;
   joinDate: string;
   endDate?: string;
   isActive: boolean;
+  season?: string;
   userName?: string;
   clubName?: string;
 }
 
 export interface CreateBoardMemberRequest {
-  userId: string;
-  clubId: string;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
   position: string;
   joinDate: string;
+  club: { id: number };
 }
 
 export interface UpdateBoardMemberRequest {
+  email?: string;
+  password?: string;
+  firstName?: string;
+  lastName?: string;
   position?: string;
   endDate?: string;
   isActive?: boolean;
+  club?: { id: number };
 }
 
 export enum BoardPosition {

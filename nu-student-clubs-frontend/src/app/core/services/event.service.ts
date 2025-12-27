@@ -16,7 +16,7 @@ export interface Event {
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = `${environment.apiUrl}/events`;
+  private apiUrl = `/api/events`;
 
   constructor(private http: HttpClient) {}
 

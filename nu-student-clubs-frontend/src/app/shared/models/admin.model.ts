@@ -1,28 +1,57 @@
 export interface Admin {
-  id: string;
-  userId: string;
-  role: string;
-  permissions: string[];
-  createdAt: Date;
-  updatedAt: Date;
+  id: number;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  profilePicture?: string;
+  active: boolean;
+  department?: string;
+  adminLevel?: string;
+  canManageAdmins: boolean;
+  canManageApplications: boolean;
+  canManageClubs: boolean;
+  roles: string[];
+  createdAt: number;
+  updatedAt: number;
 }
 
 export interface AdminResponse {
-  id: string;
-  userId: string;
-  role: string;
-  permissions: string[];
-  createdAt: string;
-  updatedAt: string;
+  id: number;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  profilePicture?: string;
+  active: boolean;
+  department?: string;
+  adminLevel?: string;
+  canManageAdmins: boolean;
+  canManageApplications: boolean;
+  canManageClubs: boolean;
+  roles: string[];
+  createdAt: number;
+  updatedAt: number;
 }
 
 export interface CreateAdminRequest {
-  userId: string;
-  role: string;
-  permissions: string[];
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  department?: string;
+  adminLevel?: string;
+  permissions?: string[];
 }
 
 export interface UpdateAdminRequest {
-  role?: string;
+  email?: string;
+  password?: string;
+  firstName?: string;
+  lastName?: string;
+  department?: string;
+  adminLevel?: string;
   permissions?: string[];
 }

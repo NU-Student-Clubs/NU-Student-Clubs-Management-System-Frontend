@@ -8,7 +8,7 @@ import { Club } from '../../shared/models/club.model';
   providedIn: 'root'
 })
 export class ClubService {
-  private apiUrl = `${environment.apiUrl}/clubs`;
+  private apiUrl = `/api/clubs`; // من غير http://localhost:8083
 
   constructor(private http: HttpClient) {}
 

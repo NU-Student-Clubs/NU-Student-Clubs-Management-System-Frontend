@@ -14,7 +14,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class CommitteeService {
-  private apiUrl = `${environment.apiUrl}/api/committees`;
+  private apiUrl = `/api/committees`;
 
   constructor(private http: HttpClient) {}
 

@@ -13,8 +13,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class BoardMemberService {
-  private apiUrl = `${environment.apiUrl}/api/board-members`;
-
+ private apiUrl = `/api/board-members`;
   constructor(private http: HttpClient) {}
 
   getAllBoardMembers(): Observable<BoardMemberResponse[]> {
