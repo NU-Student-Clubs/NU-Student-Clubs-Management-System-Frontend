@@ -19,7 +19,7 @@ import { environment } from '../../../environments/environment';
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <article *ngFor="let club of clubs" 
-                 (click)="viewClub(club.id)" 
+                 (click)="viewClub(club.id.toString())" 
                  class="rounded-lg border bg-white shadow-sm p-4 flex flex-col gap-2 cursor-pointer hover:shadow-md transition-shadow">
           <div class="flex items-start justify-between gap-3">
             <div class="flex-1">
@@ -102,7 +102,7 @@ export class ClubListComponent implements OnInit {
 
   loadClubs(): void {
     this.loading = true;
-    this.http.get<Club[]>(`${environment.apiUrl}/clubs`).subscribe({
+    this.http.get<Club[]>(`${environment.apiBaseUrl}/clubs`).subscribe({
       next: data => {
         this.clubs = data || [];
         this.loading = false;
@@ -134,7 +134,7 @@ export class ClubListComponent implements OnInit {
     this.successMessage = '';
     this.errorMessage = '';
 
-    this.http.post(`${environment.apiUrl}/clubs`, this.form.value).subscribe({
+    this.http.post(`${environment.apiBaseUrl}/clubs`, this.form.value).subscribe({
       next: () => {
         this.submitting = false;
         this.successMessage = 'Club created successfully';

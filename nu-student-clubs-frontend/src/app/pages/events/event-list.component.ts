@@ -102,7 +102,7 @@ export class EventListComponent implements OnInit {
 
   loadEvents(): void {
     this.loading = true;
-    this.http.get<Event[]>(`${environment.apiUrl}/events`).subscribe({
+    this.http.get<Event[]>(`${environment.apiBaseUrl}/events`).subscribe({
       next: data => {
         this.events = data || [];
         this.loading = false;
@@ -144,7 +144,7 @@ export class EventListComponent implements OnInit {
       clubId
     };
 
-    this.http.post(`${environment.apiUrl}/events`, payload).subscribe({
+    this.http.post(`${environment.apiBaseUrl}/events`, payload).subscribe({
       next: () => {
         this.submitting = false;
         this.successMessage = 'Event created successfully';

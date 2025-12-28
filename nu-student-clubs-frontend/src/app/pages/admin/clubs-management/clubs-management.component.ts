@@ -160,7 +160,7 @@ export class ClubsManagementComponent implements OnInit {
 
     const request = this.form.value;
     const operation = this.editingId
-      ? this.clubService.updateClub(this.editingId, request)
+      ? this.clubService.updateClub(Number(this.editingId), request)
       : this.clubService.createClub(request);
 
     operation.subscribe({

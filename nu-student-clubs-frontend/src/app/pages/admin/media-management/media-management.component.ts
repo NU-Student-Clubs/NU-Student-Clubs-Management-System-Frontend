@@ -42,7 +42,7 @@ import { GalleryService, MediaItem } from '../../../core/services/gallery.servic
             <p class="text-xs text-slate-500 mb-3"><span class="rounded bg-blue-100 px-2 py-1 text-blue-700">{{ media.type }}</span></p>
             <div class="flex gap-2">
               <button (click)="openForm(media)" class="flex-1 text-sm text-blue-600 hover:text-blue-800">Edit</button>
-              <button (click)="deleteMedia(media.id)" class="flex-1 text-sm text-red-600 hover:text-red-800">Delete</button>
+              <button (click)="media.id !== undefined && deleteMedia(media.id)" class="flex-1 text-sm text-red-600 hover:text-red-800">Delete</button>
             </div>
           </div>
         } @empty {
@@ -136,7 +136,7 @@ export class MediaManagementComponent implements OnInit {
   openForm(media?: MediaItem): void {
     this.showForm = true;
     if (media) {
-      this.editingId = media.id;
+      this.editingId = media.id !== undefined ? media.id : null;
       this.form.patchValue({
         url: media.url,
         type: media.type,

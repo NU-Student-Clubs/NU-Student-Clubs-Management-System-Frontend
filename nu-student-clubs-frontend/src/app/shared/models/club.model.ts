@@ -17,6 +17,7 @@ export interface Club {
   instagramUrl?: string;
   linkedinUrl?: string;
   numberOfMembers?: number;
+  memberCount?: number;
   isActive?: boolean;
   createdAt: string;
   updatedAt: string;

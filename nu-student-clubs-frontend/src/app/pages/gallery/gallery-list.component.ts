@@ -95,7 +95,7 @@ export class GalleryListComponent implements OnInit {
 
   loadItems(): void {
     this.loading = true;
-    this.http.get<GalleryItem[]>(`${environment.apiUrl}/gallery`).subscribe({
+    this.http.get<GalleryItem[]>(`${environment.apiBaseUrl}/gallery`).subscribe({
       next: data => {
         this.items = data || [];
         this.loading = false;
@@ -121,7 +121,7 @@ export class GalleryListComponent implements OnInit {
 
     this.submitting = true;
 
-    this.http.post(`${environment.apiUrl}/gallery`, this.form.value).subscribe({
+    this.http.post(`${environment.apiBaseUrl}/gallery`, this.form.value).subscribe({
       next: () => {
         this.submitting = false;
         this.showToast('Image uploaded successfully', 'success');

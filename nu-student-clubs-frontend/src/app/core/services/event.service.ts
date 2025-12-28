@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -16,31 +16,31 @@ export interface Event {
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = `/api/events`;
+  private base = '/events';
 
-  constructor(private http: HttpClient) {}
+  constructor(private api: ApiService) {}
 
   getAllEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.apiUrl);
+    return this.api.get<Event[]>(this.base);
   }
 
   getEventById(id: number): Observable<Event> {
-    return this.http.get<Event>(`${this.apiUrl}/${id}`);
+    return this.api.get<Event>(`${this.base}/${id}`);
   }
 
   createEvent(request: any): Observable<Event> {
-    return this.http.post<Event>(this.apiUrl, request);
+    return this.api.post<Event>(this.base, request);
   }
 
   updateEvent(id: number, request: any): Observable<Event> {
-    return this.http.put<Event>(`${this.apiUrl}/${id}`, request);
+    return this.api.put<Event>(`${this.base}/${id}`, request);
   }
 
   deleteEvent(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.api.delete<void>(`${this.base}/${id}`);
   }
 
   getEventsByClub(clubId: number): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.apiUrl}/club/${clubId}`);
+    return this.api.get<Event[]>(`${this.base}/club/${clubId}`);
   }
 }

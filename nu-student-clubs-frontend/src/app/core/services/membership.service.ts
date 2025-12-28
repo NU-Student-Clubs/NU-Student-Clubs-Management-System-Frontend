@@ -10,24 +10,24 @@ export class MembershipService {
 
   constructor(private api: ApiService) { }
 
-  // GET /applications - Get all memberships
+  // GET /memberships - Get all memberships
   getAllMemberships(): Observable<MembershipResponse[]> {
-    return this.api.get<MembershipResponse[]>('/applications');
+    return this.api.get<MembershipResponse[]>('/memberships');
   }
 
-  // GET /applications/{id} - Get membership by ID
+  // GET /memberships/{id} - Get membership by ID
   getMembershipById(id: number): Observable<MembershipResponse> {
-    return this.api.get<MembershipResponse>(`/applications/${id}`);
+    return this.api.get<MembershipResponse>(`/memberships/${id}`);
   }
 
-  // POST /applications - Create new membership application
+  // POST /memberships - Create new membership
   applyForMembership(request: MembershipRequest): Observable<MembershipResponse> {
-    return this.api.post<MembershipResponse>('/applications', request);
+    return this.api.post<MembershipResponse>('/memberships', request);
   }
 
-  // DELETE /applications/{id} - Delete membership (withdraw application)
+  // DELETE /memberships/{id}
   deleteMembership(id: number): Observable<void> {
-    return this.api.delete<void>(`/applications/${id}`);
+    return this.api.delete<void>(`/memberships/${id}`);
   }
 
   // Get user's memberships (filter by userId on frontend)
